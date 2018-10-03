@@ -1,0 +1,26 @@
+package netgloo.models;
+
+import javax.transaction.Transactional;
+
+import org.springframework.data.repository.CrudRepository;
+
+/**
+	* Un DAO para la entidad El usuario se crea simplemente extendiendo el CrudRepository
+	* interfaz proporcionada por la primavera. Los siguientes métodos son algunos de los
+	* disponible desde dicha interfaz: guardar, eliminar, eliminarTodo, findOne y findAll.
+	* La magia es que tales métodos no deben ser implementados, y además es
+	* posible crear nuevos métodos de consulta que solo funcionen al definir su firma.
+	*
+	* @author netgloo
+*/
+@Transactional
+public interface UserDao extends CrudRepository<User, Long> {
+
+  /**
+   * Return the user having the passed email or null if no user is found.
+   * 
+   * @param email the user email.
+   */
+  public User findByEmail(String email);
+
+} // class UserDao
